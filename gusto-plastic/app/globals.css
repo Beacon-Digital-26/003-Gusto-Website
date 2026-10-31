@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #1f2a44;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-gusto-orange: #ff7a00;
+  --color-gusto-orange-dark: #f05a00;
+  --color-gusto-navy: #1e2a5a;
+  --color-gusto-slate: #2b3445;
+  --font-sans: var(--font-archivo);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-archivo), Arial, Helvetica, sans-serif;
+}
+
+.font-display {
+  font-stretch: 125%;
+  font-weight: 900;
+}
+
+.font-wide {
+  font-stretch: 125%;
+}
+
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  font-size: 1em;
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+}
+
+.material-symbols-outlined.size-3\.5 {
+  font-size: 0.875rem;
+}
+
+.material-symbols-outlined.size-4 {
+  font-size: 1rem;
+}
+
+.material-symbols-outlined.size-5 {
+  font-size: 1.25rem;
+}
