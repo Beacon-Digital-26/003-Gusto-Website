@@ -5,6 +5,7 @@ type ImageSlotProps = {
   alt: string;
   label: string;
   className?: string;
+  imageClassName?: string;
   sizes?: string;
   preload?: boolean;
 };
@@ -14,6 +15,7 @@ export function ImageSlot({
   alt,
   label,
   className = "",
+  imageClassName = "",
   sizes = "50vw",
   preload,
 }: ImageSlotProps) {
@@ -26,7 +28,7 @@ export function ImageSlot({
           fill
           sizes={sizes}
           preload={preload}
-          className="object-contain"
+          className={imageClassName || "object-contain"}
         />
       </div>
     );

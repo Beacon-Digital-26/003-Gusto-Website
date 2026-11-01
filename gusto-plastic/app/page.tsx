@@ -22,6 +22,8 @@ import {
   WhatsAppIcon,
 } from "./_components/icons";
 import { ImageSlot } from "./_components/image-slot";
+import { AutoHideHeader } from "./_components/auto-hide-header";
+import { FooterNav, SiteNav } from "./_components/site-nav";
 
 // Drop files into /public/images and set the paths here, e.g. "/images/logo.png".
 const images: {
@@ -32,15 +34,11 @@ const images: {
   aboutWatermark?: string;
 } = {
   logo: "/images/logo.png",
-  heroProduct: "/images/hero-product.png",
+  heroProduct: "/images/hero-product2.png",
+  whyChooseUs: "/images/why-choose-us.png",
+  aboutRolls: "/images/about-us-product.png",
+  aboutWatermark: "/images/about-watermark.png",
 };
-
-const navLinks = [
-  { label: "Home", href: "#", active: true },
-  { label: "Products", href: "#products" },
-  { label: "About Us", href: "#about" },
-  { label: "Contact Us", href: "#contact" },
-];
 
 type IconComponent = ComponentType<{ className?: string }>;
 
@@ -58,12 +56,13 @@ const products: {
   dimensions: string;
   bagsPerRoll: number;
   image?: string;
+  imageClassName?: string;
 }[] = [
-  { size: "S", dimensions: "19 x 22 inch", bagsPerRoll: 20 },
-  { size: "M", dimensions: "22 x 34 inch", bagsPerRoll: 20 },
-  { size: "L", dimensions: "28 x 35 inch", bagsPerRoll: 20 },
-  { size: "XL", dimensions: "32 x 39 inch", bagsPerRoll: 15 },
-  { size: "XXL", dimensions: "36 x 48 inch", bagsPerRoll: 10 },
+  { size: "S", dimensions: "19 x 22 inch", bagsPerRoll: 20, image: "/images/s-product.png" },
+  { size: "M", dimensions: "22 x 34 inch", bagsPerRoll: 20, image: "/images/m-product.png", imageClassName: "object-cover scale-[1.12]" },
+  { size: "L", dimensions: "28 x 35 inch", bagsPerRoll: 20, image: "/images/l-product.png", imageClassName: "object-cover scale-[1.12]" },
+  { size: "XL", dimensions: "32 x 39 inch", bagsPerRoll: 15, image: "/images/xl-product.png", imageClassName: "object-cover scale-[1.12]" },
+  { size: "XXL", dimensions: "36 x 48 inch", bagsPerRoll: 10, image: "/images/xxl-product.png", imageClassName: "object-cover scale-[1.12]" },
 ];
 
 const testimonials = [
@@ -150,38 +149,25 @@ export default function Home() {
 
 function Header() {
   return (
-    <header className="sticky top-0 z-30 bg-white">
+    <AutoHideHeader>
       <div className="flex justify-center py-3">
-        {images.logo ? (
-          <Image
-            src={images.logo}
-            alt="Gusto Pro"
-            width={259}
-            height={114}
-            preload
-            className="h-[114px] w-[259px]"
-          />
-        ) : (
-          <LogoFallback />
-        )}
+        <a href="#home" aria-label="Gusto Pro home">
+          {images.logo ? (
+            <Image
+              src={images.logo}
+              alt="Gusto Pro"
+              width={259}
+              height={114}
+              preload
+              className="h-[114px] w-[259px]"
+            />
+          ) : (
+            <LogoFallback />
+          )}
+        </a>
       </div>
-      <nav className="grid grid-cols-4 border-y border-black/5">
-        {navLinks.map((link) => (
-          <a
-            key={link.label}
-            href={link.href}
-            aria-current={link.active ? "page" : undefined}
-            className={`font-wide py-1.5 text-center text-[10px] font-semibold uppercase tracking-wide transition-colors sm:text-xs ${
-              link.active
-                ? "bg-gusto-orange text-white"
-                : "text-gusto-navy hover:bg-gusto-orange/10"
-            }`}
-          >
-            {link.label}
-          </a>
-        ))}
-      </nav>
-    </header>
+      <SiteNav />
+    </AutoHideHeader>
   );
 }
 
@@ -200,7 +186,10 @@ function LogoFallback() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-gusto-orange from-60% to-white">
+    <section
+      id="home"
+      className="relative -mt-px overflow-hidden bg-gradient-to-b from-gusto-orange from-60% to-white"
+    >
       <div
         aria-hidden="true"
         className="font-display pointer-events-none absolute inset-y-0 right-0 flex select-none flex-col justify-center pr-[2vw] text-right text-[233px] leading-[0.85] tracking-[14%] text-white/15"
@@ -209,7 +198,7 @@ function Hero() {
         <span>PRO</span>
       </div>
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-6 pb-32 pt-12 sm:px-10 md:grid-cols-2 md:pb-40 md:pt-16">
+      <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-6 pb-32 pt-[75px] sm:px-10 md:grid-cols-2 md:pb-40 md:pt-[91px]">
         <div className="relative z-10 -ml-[50px] md:col-start-1">
           <h1 className="font-display text-6xl leading-[90px] text-white uppercase sm:text-7xl lg:text-8xl xl:text-[7.5rem]">
             Trash
@@ -225,21 +214,21 @@ function Hero() {
           </p>
           <a
             href="#products"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-gusto-orange-dark px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-900/20 transition hover:-translate-y-0.5 hover:bg-[#e04f00]"
+            className="mt-8 inline-flex h-[56px] w-[231px] items-center justify-center gap-2 rounded-full bg-gusto-orange-dark text-sm font-semibold text-white shadow-lg shadow-orange-900/20 transition hover:-translate-y-0.5 hover:bg-[#e04f00]"
           >
             Shop Gusto Now
             <ArrowRightIcon className="size-4" />
           </a>
         </div>
 
-        <div className="relative z-10 flex justify-center md:absolute md:right-[-4%] md:top-1/2 md:w-[820px] md:-translate-x-[30px] md:-translate-y-[calc(50%+35px)] md:justify-end">
+        <div className="relative z-10 flex justify-center md:absolute md:right-[-4%] md:top-1/2 md:w-[608.24px] md:-translate-x-[100px] md:-translate-y-[calc(50%+5px)] md:justify-end">
           <ImageSlot
             src={images.heroProduct}
             alt="Gusto Pro heavy duty garbage bag roll"
             label="Hero product image"
-            sizes="820px"
+            sizes="609px"
             preload
-            className="aspect-[608/722] w-[min(820px,92vw)] max-w-none drop-shadow-2xl"
+            className="aspect-[608.24/722.41] w-[608.24px] max-w-full drop-shadow-2xl"
           />
         </div>
       </div>
@@ -271,11 +260,11 @@ function WhyChooseUs() {
   return (
     <section className="overflow-hidden">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 pb-24 sm:px-10 lg:grid-cols-[1.3fr_1fr]">
-        <div>
-          <h2 className="font-display text-5xl leading-[0.9] text-gusto-orange uppercase sm:text-6xl lg:text-7xl">
+        <div className="-translate-x-[30px]">
+          <h2 className="font-display text-[84px] leading-[62px] tracking-[-1.12px] text-gusto-orange uppercase">
             Why
             <br />
-            Choose Us?
+            <span className="whitespace-nowrap">Choose Us?</span>
           </h2>
 
           <div className="mt-10 grid gap-5 sm:grid-cols-[1.6fr_1fr]">
@@ -311,8 +300,8 @@ function WhyChooseUs() {
             src={images.whyChooseUs}
             alt="Hand holding a tied black Gusto Pro garbage bag"
             label="Hand holding bag image"
-            sizes="(min-width: 1024px) 40vw, 90vw"
-            className="aspect-[3/4] w-full max-w-md text-gusto-slate"
+            sizes="740px"
+            className="aspect-[740/925] w-[740px] max-w-full -translate-x-[80px] bg-white text-gusto-slate"
           />
         </div>
       </div>
@@ -323,7 +312,7 @@ function WhyChooseUs() {
 function Products() {
   return (
     <section id="products" className="scroll-mt-36 bg-white px-6 pb-24 sm:px-10">
-      <h2 className="font-display text-center text-5xl text-gusto-orange uppercase sm:text-6xl">
+      <h2 className="font-display text-center text-[84px] leading-[62px] tracking-[-1.12px] text-gusto-orange uppercase">
         Products
       </h2>
       <ul className="mx-auto mt-12 flex max-w-5xl flex-wrap justify-center gap-x-6 gap-y-12">
@@ -345,6 +334,7 @@ function ProductCard({
   dimensions,
   bagsPerRoll,
   image,
+  imageClassName,
 }: (typeof products)[number]) {
   return (
     <article className="group">
@@ -354,6 +344,7 @@ function ProductCard({
           alt={`Gusto Pro heavy duty garbage bag, size ${size}`}
           label={`Size ${size} product image`}
           sizes="(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw"
+          imageClassName={imageClassName}
           className="aspect-[4/3] w-full text-gusto-slate transition duration-300 group-hover:scale-105"
         />
       </div>
@@ -429,15 +420,15 @@ function AboutUs() {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-24 top-1/2 size-[36rem] -translate-y-1/2 sm:size-[44rem]"
+        className="pointer-events-none absolute right-0 top-1/2 h-[1056px] w-[1036px] -translate-y-1/2"
       >
         {images.aboutWatermark ? (
           <Image
             src={images.aboutWatermark}
             alt=""
             fill
-            sizes="44rem"
-            className="object-contain opacity-15"
+            sizes="1036px"
+            className="object-contain object-right"
           />
         ) : (
           <div className="font-display flex size-full items-center justify-center rounded-full border-[3rem] border-zinc-200/70 text-[22rem] leading-none text-zinc-200/70">
@@ -449,16 +440,16 @@ function AboutUs() {
       <div className="relative grid items-center gap-12 lg:grid-cols-2">
         <ImageSlot
           src={images.aboutRolls}
-          alt="Stack of Gusto Pro heavy duty garbage bag rolls in sizes M to XXL"
+          alt="Stack of Gusto Pro heavy duty garbage bag rolls in sizes S to XXL"
           label="Stacked rolls image"
           sizes="(min-width: 1024px) 50vw, 100vw"
-          className="mx-6 aspect-[4/5] max-w-xl text-gusto-slate lg:mx-0 lg:rounded-l-none"
+          className="mx-6 aspect-[2/3] max-w-xl bg-white text-gusto-slate lg:mx-0"
         />
         <div className="px-6 text-center sm:px-10 lg:pr-16 lg:text-right">
-          <h2 className="font-display text-5xl text-gusto-orange uppercase sm:text-6xl lg:text-7xl">
+          <h2 className="font-display text-5xl tracking-[-1.12px] text-gusto-orange uppercase sm:text-6xl lg:text-7xl">
             About Us
           </h2>
-          <div className="mt-6 space-y-2 text-sm leading-relaxed text-gusto-slate sm:text-base lg:ml-auto lg:max-w-lg">
+          <div className="mt-6 space-y-5 text-right text-[18px] font-light leading-[1.7] text-[#b3b3b3] lg:ml-auto lg:max-w-xl">
             <p>
               Gusto is a trash bag brand by Heng Heng Plastic Trading. We make
               strong, reliable bags built to handle everyday household and
@@ -626,101 +617,90 @@ function SocialLinks({
   );
 }
 
-function Footer() {
-  const footerLinks = [
-    { label: "Home", href: "#" },
-    { label: "About Us", href: "#about" },
-    { label: "Services", href: "#products" },
-    { label: "Contact Us", href: "#contact" },
-  ];
+const footerSocials = socials.filter((item) =>
+  ["WhatsApp", "Instagram", "TikTok", "Shopee"].includes(item.label),
+);
 
+function Footer() {
   return (
-    <footer className="bg-[#0a1a5c] text-white">
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-16 sm:px-10 md:grid-cols-[1.4fr_1fr_1fr]">
+    <footer className="bg-[#001256] text-white">
+      <div className="grid w-full items-start gap-12 px-[50px] pb-10 pt-14 md:grid-cols-3">
         <div>
-          {images.logo ? (
-            <Image
-              src={images.logo}
-              alt="Gusto Pro"
-              width={259}
-              height={114}
-              className="h-[114px] w-[259px]"
-            />
-          ) : (
-            <LogoFallback />
-          )}
-          <p className="mt-6 max-w-xs text-xs leading-relaxed text-white/80">
+          <Image
+            src="/images/logo-footer.png"
+            alt="Gusto Pro"
+            width={777}
+            height={342}
+            unoptimized
+            className="h-auto w-[220px]"
+          />
+          <p className="mt-6 max-w-[280px] text-[13px] leading-relaxed text-white">
             Manufactured with German engineering discipline by Heng Heng
             Plastic Trading Malaysia. Toughest in the industry. Trusted by
             many.
           </p>
-          <p className="mt-8 text-xs font-semibold uppercase tracking-wide text-gusto-orange">
+          <p className="mt-8 text-[11px] font-semibold uppercase tracking-[0.16em] text-gusto-orange">
             Headquarters
           </p>
-          <p className="mt-2 max-w-xs text-xs leading-relaxed text-white/80">
+          <p className="mt-2 max-w-[280px] text-[13px] leading-relaxed text-white">
             {contact.hqAddress}
           </p>
         </div>
 
-        <div className="space-y-10">
-          <nav aria-label="Footer">
-            <p className="text-xs font-semibold uppercase tracking-wide">
-              Company Navigation
+        <div className="justify-self-center">
+          <FooterNav />
+          <div className="mt-10">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em]">
+              Social Media
             </p>
-            <ul className="mt-4 space-y-2 text-xs text-white/70">
-              {footerLinks.map((link) => (
-                <li key={link.label}>
+            <ul className="mt-4 flex gap-4">
+              {footerSocials.map(({ label, href, icon: SocialIcon }) => (
+                <li key={label}>
                   <a
-                    href={link.href}
-                    className="underline-offset-4 transition-colors hover:text-gusto-orange hover:underline"
+                    href={href}
+                    aria-label={label}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white transition-colors hover:text-gusto-orange"
                   >
-                    {link.label}
+                    <SocialIcon className="size-5" />
                   </a>
                 </li>
               ))}
             </ul>
-          </nav>
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-wide">
-              Social Media
-            </p>
-            <SocialLinks
-              className="mt-3"
-              itemClassName="text-white hover:text-gusto-orange"
-            />
           </div>
         </div>
 
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-wide">
+        <div className="justify-self-end">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.16em]">
             Business Hours
           </p>
-          <dl className="mt-4 space-y-2 text-xs">
+          <dl className="mt-5 space-y-2 text-[13px]">
             {businessHours.map(({ day, hours }) => (
-              <div key={day} className="flex gap-4">
-                <dt className="w-16 shrink-0 font-semibold">{day}:</dt>
-                <dd className="text-white/70">{hours}</dd>
+              <div key={day} className="flex gap-1">
+                <dt className="whitespace-nowrap">{day}:</dt>
+                <dd>{hours}</dd>
               </div>
             ))}
           </dl>
           <a
             href={contact.phoneHref}
-            className="mt-6 block rounded-md bg-white/10 px-4 py-3 transition-colors hover:bg-white/15"
+            className="mt-8 block w-[260px] bg-white/10 px-5 py-4 transition-colors hover:bg-white/15"
           >
-            <span className="block text-[10px] font-semibold uppercase tracking-wide text-white/70">
+            <span className="block text-[11px] font-semibold uppercase tracking-[0.16em]">
               Direct Sales HP
             </span>
-            <span className="mt-1 block text-lg">{contact.phone}</span>
+            <span className="mt-2 block text-lg tracking-wide">
+              {contact.phone}
+            </span>
           </a>
         </div>
       </div>
 
-      <div className="border-t border-white/10">
-        <p className="mx-auto max-w-6xl px-6 py-5 font-mono text-[10px] uppercase tracking-wide text-white/60 sm:px-10">
-          &copy; 2026 Heng Heng Plastic Trading Malaysia. All Rights Reserved.
-          ISO 9001:2015 Certified.
-        </p>
-      </div>
+      <p className="px-[50px] pb-6 text-[10px] uppercase tracking-[0.12em] text-white/70">
+        &copy; 2026 Heng Heng Plastic Trading Malaysia. All Rights Reserved.
+        ISO 9001:2015 Certified.
+      </p>
     </footer>
   );
 }
@@ -742,7 +722,7 @@ function FeatureCard({
 }: FeatureCardProps) {
   return (
     <article
-      className={`rounded-2xl border border-black/5 bg-white p-6 shadow-[0_4px_24px_rgba(15,23,42,0.06)] transition hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(255,122,0,0.15)] ${className}`}
+      className={`rounded-2xl border border-black/5 bg-white p-6 shadow-[0_4px_24px_rgba(15,23,42,0.06)] transition hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(255,122,0,0.38)] ${className}`}
     >
       <span className="flex size-9 items-center justify-center rounded-full bg-gusto-orange/10 text-gusto-orange">
         <FeatureIcon className="size-4" />
