@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
+import { Footer } from "./components/Footer";
+import { Navbar } from "./components/Navbar";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -25,7 +27,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&display=swap"
         />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <div className="flex flex-1 flex-col bg-white text-gusto-slate">
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
+      </body>
     </html>
   );
 }
