@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Reveal } from "./Reveal";
 import { businessHours, contact, footerSocials } from "../lib/site-data";
 
 const footerLinks = [
@@ -13,9 +14,9 @@ function FooterNav() {
   return (
     <nav aria-label="Footer">
       <p className="text-[11px] font-semibold uppercase tracking-[0.16em]">
-        Company Navigation
+        Navigation
       </p>
-      <ul className="mt-5 space-y-2.5 text-[13px] text-white">
+      <ul className="mt-5 space-y-3 text-[13px] text-white/80">
         {footerLinks.map((link) => {
           const isHighlighted = link.href === "/#contact";
           return (
@@ -40,84 +41,76 @@ function FooterNav() {
 
 export function Footer() {
   return (
-    <footer className="bg-[#001256] text-white">
-      <div className="grid w-full items-start gap-12 px-[50px] pb-10 pt-14 md:grid-cols-3">
-        <div>
+    <footer className="bg-[#001256] px-6 text-white sm:px-10 lg:px-[50px]">
+      <div className="grid items-start gap-x-10 gap-y-10 pb-7 pt-8 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.7fr_1.25fr_1fr]">
+        <Reveal as="div">
           <Image
             src="/images/logo-footer.png"
             alt="Gusto Pro"
             width={777}
             height={342}
             unoptimized
-            className="h-auto w-[220px]"
+            className="h-auto w-[160px] max-w-full"
           />
-          <p className="mt-6 max-w-[280px] text-[13px] leading-relaxed text-white">
-            Manufactured with German engineering discipline by Heng Heng
-            Plastic Trading Malaysia. Toughest in the industry. Trusted by
-            many.
-          </p>
-          <p className="mt-8 text-[11px] font-semibold uppercase tracking-[0.16em] text-gusto-orange">
-            Headquarters
-          </p>
-          <p className="mt-2 max-w-[280px] text-[13px] leading-relaxed text-white">
+          <p className="mt-4 max-w-[360px] text-[13px] leading-relaxed text-white/80">
             {contact.hqAddress}
           </p>
-        </div>
+          <ul className="mt-5 flex gap-3">
+            {footerSocials.map(({ label, href, icon: SocialIcon }) => (
+              <li key={label}>
+                <a
+                  href={href}
+                  aria-label={label}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex size-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-gusto-orange focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gusto-orange"
+                >
+                  <SocialIcon className="size-4" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
 
-        <div className="justify-self-center">
+        <Reveal as="div" delay={100}>
           <FooterNav />
-          <div className="mt-10">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.16em]">
-              Social Media
-            </p>
-            <ul className="mt-4 flex gap-4">
-              {footerSocials.map(({ label, href, icon: SocialIcon }) => (
-                <li key={label}>
-                  <a
-                    href={href}
-                    aria-label={label}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white transition-colors hover:text-gusto-orange"
-                  >
-                    <SocialIcon className="size-5" />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        </Reveal>
 
-        <div className="justify-self-end">
+        <Reveal as="div" delay={200}>
           <p className="text-[11px] font-semibold uppercase tracking-[0.16em]">
-            Business Hours
+            Working Hours
           </p>
-          <dl className="mt-5 space-y-2 text-[13px]">
+          <dl className="mt-5 space-y-3 text-[13px] text-white/80">
             {businessHours.map(({ day, hours }) => (
-              <div key={day} className="flex gap-1">
-                <dt className="whitespace-nowrap">{day}:</dt>
-                <dd>{hours}</dd>
+              <div key={day} className="grid grid-cols-[auto_1fr] gap-x-4">
+                <dt className="min-w-[78px] whitespace-nowrap">{day}:</dt>
+                <dd className="whitespace-nowrap">{hours}</dd>
               </div>
             ))}
           </dl>
-          <a
-            href={contact.phoneHref}
-            className="mt-8 block w-[260px] bg-white/10 px-5 py-4 transition-colors hover:bg-white/15"
-          >
-            <span className="block text-[11px] font-semibold uppercase tracking-[0.16em]">
-              Direct Sales HP
-            </span>
-            <span className="mt-2 block text-lg tracking-wide">
+        </Reveal>
+
+        <Reveal as="div" delay={300}>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.16em]">
+            Contact Numbers
+          </p>
+          <p className="mt-5 flex gap-3 text-[13px] text-white/80">
+            <span>H/P:</span>
+            <a href={contact.phoneHref} className="transition-colors hover:text-gusto-orange">
               {contact.phone}
-            </span>
-          </a>
-        </div>
+            </a>
+          </p>
+        </Reveal>
       </div>
 
-      <p className="px-[50px] pb-6 text-[10px] uppercase tracking-[0.12em] text-white/70">
-        &copy; 2026 Heng Heng Plastic Trading Malaysia. All Rights Reserved.
-        ISO 9001:2015 Certified.
-      </p>
+      <div className="flex flex-col gap-3 border-t border-white/10 py-5 text-[10px] text-white/60 sm:flex-row sm:items-center sm:justify-between">
+        <p>
+          &copy; 2026 Heng Heng Plastic Trading Malaysia. All Rights Reserved.
+        </p>
+        <p className="uppercase tracking-[0.16em] text-white/80">
+          Powered by Beacon Studio
+        </p>
+      </div>
     </footer>
   );
 }

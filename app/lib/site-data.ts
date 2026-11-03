@@ -1,15 +1,9 @@
 import type { ComponentType } from "react";
 import {
-  BedIcon,
-  BuildingIcon,
   FacebookIcon,
-  FactoryIcon,
   InstagramIcon,
   ShoppingBagIcon,
-  SprayIcon,
   TikTokIcon,
-  ToolsIcon,
-  TruckIcon,
   WhatsAppIcon,
 } from "../components/Icons";
 
@@ -19,19 +13,10 @@ export type IconComponent = ComponentType<{ className?: string }>;
 export const images = {
   logo: "/images/logo.png",
   heroProduct: "/images/hero-product2.png",
-  whyChooseUs: "/images/why-choose-us.png",
+  whyChooseUs: "/images/why-choose-us-new.png",
   aboutRolls: "/images/about-us-product.png",
   aboutWatermark: "/images/about-watermark.png",
 };
-
-export const partners: { name: string; icon: IconComponent }[] = [
-  { name: "Apex Logistics", icon: TruckIcon },
-  { name: "Metro Facilities", icon: BuildingIcon },
-  { name: "Nordic Clean", icon: SprayIcon },
-  { name: "Summit Build", icon: ToolsIcon },
-  { name: "Titan Industrial", icon: FactoryIcon },
-  { name: "Grand Plaza", icon: BedIcon },
-];
 
 export const products: {
   size: string;
@@ -47,31 +32,149 @@ export const products: {
   { size: "XXL", dimensions: "36 x 48 inch", bagsPerRoll: 10, image: "/images/xxl-product.png", imageClassName: "object-cover scale-[1.12]" },
 ];
 
+// Sourced from verified Shopee buyer reviews (ShopeeReviews_7049730518). Only
+// light punctuation/line-break/typo cleanup applied; wording kept authentic.
+// `id` uses the source review_id since a few masked usernames repeat.
 export const testimonials = [
   {
+    id: "11327332210",
     quote:
-      "No more double bagging. Gusto bags cut our facility plastic waste in half while never splitting even under heavy liquid loads.",
-    name: "Marcus T.",
-    role: "Head of Facilities, Apex Logistics",
+      "Beli le kome takkan menyesal punya sebab teman pun dah repeat beli kali ke dua. Kualiti dan saiz yang puas hati serta harganya yang amat berpatutan. Supplier pun bungkus barangan dengan begitu kemas dan rapi sekali. Terbaekkkk supplier!",
+    name: "z*****e",
+    role: "Verified Shopee Buyer \u00b7 Size XL",
   },
   {
+    id: "107053580684",
     quote:
-      "We dump sharp metal offcuts and wet debris daily. Zero rips or leaks. Absolute tank of a bag for demolition sites.",
-    name: "Ir. Dave Wong",
-    role: "Site Operations Manager, Summit Construction",
+      "Alhamdulillah, items received in good condition. Thanks seller & courier service! Very practical, useful & satisfying quality. Highly recommended products & seller.",
+    name: "s*****0",
+    role: "Verified Shopee Buyer \u00b7 Size XL",
   },
   {
+    id: "10357186130",
     quote:
-      "Heng Heng Plastic delivers pristine German-grade quality right on schedule. It has eliminated housekeeping leaks in all 8 hotel properties.",
-    name: "Sarah Lin",
-    role: "Supply Chain Director, Grand Pacific Hospitality",
+      "Dengan adanya plastik sampah ini, ia memudahkan saya untuk menyediakan bungkusan setiap kali tong sampah telah penuh. Material plastik agak tebal dan tidak mudah koyak. Ia mampu menampung kandungan sampah yang banyak dan berat.",
+    name: "z*****e",
+    role: "Verified Shopee Buyer \u00b7 Size XL",
+  },
+  {
+    id: "7176332625",
+    quote:
+      "Penghantaran dr seller pantas, harga antara yg terbaik, muat dgn bakul sampah, yg terbaik plastik tak bocor walau sampah penuh dan padat. Tq seller!",
+    name: "rafieramli",
+    role: "Verified Shopee Buyer \u00b7 Size S",
+  },
+  {
+    id: "15156928143",
+    quote:
+      "Senang nak buat kerja-kerja kemas barang-barang besar dan berat. Plastik tebal, sangat mudah, terbaik. Nice packaging, secure wrapping!",
+    name: "syaamazlan992",
+    role: "Verified Shopee Buyer \u00b7 Size XXL",
+  },
+  {
+    id: "15399500538",
+    quote:
+      "This is my 2nd time buying already, the thickness and quality of the bags are top notch and reasonably priced. Highly recommended products.",
+    name: "my7750_28200",
+    role: "Verified Shopee Buyer \u00b7 Size L",
+  },
+  {
+    id: "7350575318",
+    quote:
+      "Looking for M size or 60cm x 60cm. Found this most suitable with my 20L dustbin. Price cheaper than buy at physical store. Sure will buy again.",
+    name: "p*****h",
+    role: "Verified Shopee Buyer \u00b7 Size M",
+  },
+  {
+    id: "57554843122",
+    quote:
+      "Barang sudah sampai dalam 3 hari, 4th repeated order. Mmg bagus plastic bag ni, harga berpatutan, tahan lasak, terbaik plastik sampah ni. Hats off seller!",
+    name: "sakthideva",
+    role: "Verified Shopee Buyer \u00b7 Size M",
+  },
+  {
+    id: "16046000984",
+    quote:
+      "Dari PKP pakai plastic ni, sangat bagus tahan berat. Plastic berkualiti dan agak tebal, saya suka size pun just nice, harga lagi murah dari luar and berkualiti. Tq seller.",
+    name: "m*****n",
+    role: "Verified Shopee Buyer \u00b7 Size XL",
+  },
+  {
+    id: "12567765154",
+    quote:
+      "Thanks seller for the speedy delivery, all items received in good condition. This is my second time purchasing from this seller. The garbage plastic is very good coz it's thick and not easily torn like some other garbage bags.",
+    name: "b*****8",
+    role: "Verified Shopee Buyer \u00b7 Size XL",
+  },
+  {
+    id: "97220985843",
+    quote:
+      "Harga berpatutan, size besar, cukup untuk kegunaan, boleh isi banyak barang, tahan juga. Tapi kalau nak yang betul-betul heavy duty, kena cari yang lagi tebal.",
+    name: "b*****z",
+    role: "Verified Shopee Buyer \u00b7 Size XL",
+  },
+  {
+    id: "98888464809",
+    quote:
+      "Tebal la jugak, tak macam yang nipis untuk buang kertas je. Boleh pakai untuk dapur. Tak mudah koyak dan berbaloi dengan harga. Saiz S pun elok, senang muat bakul sampah yang kecik.",
+    name: "m*****r",
+    role: "Verified Shopee Buyer \u00b7 Size S",
+  },
+  {
+    id: "107016410094",
+    quote:
+      "Barang sampai dengan cepat dan dalam keadaan sangat baik. Packaging kemas dan selamat, tak ada sebarang kerosakan. Kualiti barang memang memuaskan dan sama seperti dalam gambar. Harga pun berbaloi dengan kualiti yang diterima.",
+    name: "k*****5",
+    role: "Verified Shopee Buyer \u00b7 Size L",
+  },
+  {
+    id: "12879918237",
+    quote:
+      "Plastik xnipis xmudah koyak. Harga pun murah. Tong sampah hijau tu plastik saiz S lebih kurang tinggi A4 paper. Saiz XL & L belum guna. In Syaa-Allah nanti repeat order.",
+    name: "m*****f",
+    role: "Verified Shopee Buyer \u00b7 Size XL",
+  },
+  {
+    id: "98475890703",
+    quote:
+      "Penghantaran superb laju, plastic tak tebal tak nipis sangat, harga pun murah. Tqvm seller, will repeat again!",
+    name: "hafizarebear",
+    role: "Verified Shopee Buyer \u00b7 Size L",
+  },
+  {
+    id: "12082489049",
+    quote:
+      "Dah repeat banyak kali beli dari seller ni. Happy dapat beli barang lebih kurang sama kualiti dengan brand mahal tapi pada harga yang lebih murah. Terima kasih seller.",
+    name: "sarimah.talib",
+    role: "Verified Shopee Buyer \u00b7 Size XL",
+  },
+  {
+    id: "65468386659",
+    quote:
+      "Dah selalu guna plastic ni, memang tahan, murah dan banyak. Memang recommended plastic ni, tq seller. Boleh repeat order lagi kalau macam ni.",
+    name: "sharol80",
+    role: "Verified Shopee Buyer \u00b7 Size L",
+  },
+  {
+    id: "13456095054",
+    quote:
+      "Second time beli sini. Nak kata murah tu mungkin ada yang lagi murah, tapi kualiti for this one is tiptop, tebal sikit. That's why suka beli sini. Hantar pun cepat. Thanks seller!",
+    name: "sbsyazwani",
+    role: "Verified Shopee Buyer \u00b7 Size S",
+  },
+  {
+    id: "96919091544",
+    quote:
+      "Produk diterima dengan cepat dan dalam keadaan sangat baik. Kualiti memang memuaskan, sama seperti yang diterangkan dalam iklan. Harga pun berbaloi dan sesuai dengan bajet. Seller responsif serta pembungkusan sangat kemas.",
+    name: "homestore_diy",
+    role: "Verified Shopee Buyer \u00b7 Size S",
   },
 ];
 
 export const contact = {
   phone: "012-922 5233",
   phoneHref: "tel:+60129225233",
-  email: "yonghainmsb@gmail.com",
+  email: "hengheng@gmail.com",
   hqAddress:
     "No. 2, 2A, 3, 3A, 4, 4A, Lot 5440, Persimpangan, Jln Taman Jeliti, Tandop, 05400 Alor Setar, Kedah",
 };

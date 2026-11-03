@@ -25,6 +25,18 @@ export function ArrowRightIcon(props: MaterialIconProps) {
   return <MaterialIcon name="arrow_forward" {...props} />;
 }
 
+export function ArrowLeftIcon(props: MaterialIconProps) {
+  return <MaterialIcon name="arrow_back" {...props} />;
+}
+
+export function MenuIcon(props: MaterialIconProps) {
+  return <MaterialIcon name="menu" {...props} />;
+}
+
+export function CloseIcon(props: MaterialIconProps) {
+  return <MaterialIcon name="close" {...props} />;
+}
+
 export function TruckIcon(props: MaterialIconProps) {
   return <MaterialIcon name="local_shipping" {...props} />;
 }
@@ -59,6 +71,10 @@ export function ExpandIcon(props: MaterialIconProps) {
 
 export function ShoppingBagIcon(props: MaterialIconProps) {
   return <MaterialIcon name="shopping_bag" {...props} />;
+}
+
+export function MoneyBagIcon(props: MaterialIconProps) {
+  return <MaterialIcon name="money_bag" {...props} />;
 }
 
 export function StarIcon(props: MaterialIconProps) {

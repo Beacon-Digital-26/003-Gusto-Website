@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Archivo } from "next/font/google";
+import { Archivo, Poppins } from "next/font/google";
 import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
 import "./globals.css";
@@ -10,6 +10,12 @@ const archivo = Archivo({
   axes: ["wdth"],
 });
 
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+});
+
 export const metadata: Metadata = {
   title: "Gusto Pro | Trash Bag Built Tough",
   description:
@@ -18,7 +24,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${archivo.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${archivo.variable} ${poppins.variable} h-full antialiased`}
+    >
       <head>
         {/* Material Symbols is not available through next/font/google. */}
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}

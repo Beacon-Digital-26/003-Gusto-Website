@@ -20,6 +20,13 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Contact form
+
+The Contact Us section includes an enquiry form layout with name, email, optional
+phone, and message fields. Submissions are not connected to a service yet, so
+the send button is disabled. Connect a submission handler with validation and
+delivery feedback before enabling it.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

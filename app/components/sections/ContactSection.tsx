@@ -1,33 +1,7 @@
 import type { ReactNode } from "react";
-import { MailIcon, MapPinIcon, PhoneIcon } from "../Icons";
-import { ImageSlot } from "../ImageSlot";
-import { contact, locations, socials, type IconComponent } from "../../lib/site-data";
-
-function SocialLinks({
-  className = "",
-  itemClassName = "",
-}: {
-  className?: string;
-  itemClassName?: string;
-}) {
-  return (
-    <ul className={`flex gap-2 ${className}`}>
-      {socials.map(({ label, href, icon: SocialIcon }) => (
-        <li key={label}>
-          <a
-            href={href}
-            aria-label={label}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`flex size-8 items-center justify-center rounded-full transition-colors ${itemClassName}`}
-          >
-            <SocialIcon className="size-4" />
-          </a>
-        </li>
-      ))}
-    </ul>
-  );
-}
+import { ArrowRightIcon, MailIcon, MapPinIcon, PhoneIcon } from "../Icons";
+import { Reveal } from "../Reveal";
+import { contact, type IconComponent } from "../../lib/site-data";
 
 function ContactItem({
   icon: ItemIcon,
@@ -53,53 +27,21 @@ function ContactItem({
   );
 }
 
-function LocationCard({
-  branch,
-  address,
-  image,
-  className = "",
-}: (typeof locations)[number] & { className?: string }) {
-  return (
-    <article className={className}>
-      <div className="overflow-hidden rounded-lg border border-black/5 bg-zinc-100 shadow-sm">
-        <ImageSlot
-          src={image}
-          alt={`Heng Heng Plastic Trading ${branch} shopfront`}
-          label={`${branch} shop photo`}
-          sizes="(min-width: 768px) 560px, 100vw"
-          className="aspect-[16/9] w-full text-gusto-slate"
-        />
-      </div>
-      <h4 className="mt-4 text-lg font-bold uppercase leading-tight text-gusto-navy sm:text-xl">
-        Heng Heng Plastic Trading
-        <br />({branch})
-      </h4>
-      <a
-        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-2 block max-w-md text-xs text-gusto-slate hover:text-gusto-orange hover:underline"
-      >
-        {address}
-      </a>
-    </article>
-  );
-}
-
 export function ContactSection() {
-  const [headquarters, ...branches] = locations;
-
   return (
     <section
       id="contact"
       className="scroll-mt-36 bg-slate-50 px-6 py-20 sm:px-10 sm:py-24"
     >
-      <h2 className="font-display text-center text-5xl text-gusto-orange uppercase sm:text-7xl">
+      <Reveal
+        as="h2"
+        className="font-display text-center text-5xl text-gusto-orange uppercase sm:text-7xl"
+      >
         Contact Us
-      </h2>
+      </Reveal>
 
       <div className="mx-auto mt-14 grid max-w-6xl gap-x-16 gap-y-16 md:grid-cols-2">
-        <div>
+        <Reveal as="div">
           <h3 className="font-display text-2xl text-gusto-navy uppercase sm:text-3xl">
             Get in Touch
           </h3>
@@ -126,27 +68,80 @@ export function ContactSection() {
               </a>
             </ContactItem>
           </ul>
+        </Reveal>
 
-          <p className="mt-10 text-sm font-bold uppercase tracking-wide text-gusto-navy">
-            Other Platforms:
-          </p>
-          <SocialLinks className="mt-3" itemClassName="bg-gusto-navy text-white hover:bg-gusto-orange" />
-        </div>
-
-        <div>
-          <h3 className="font-display text-2xl text-gusto-navy uppercase sm:text-3xl">
-            Locations
+        <Reveal as="div" delay={100} className="rounded-2xl border border-gusto-navy/10 bg-white p-6 shadow-sm sm:p-8">
+          <h3 id="contact-form-heading" className="font-display text-2xl text-gusto-navy uppercase sm:text-3xl">
+            Send an Enquiry
           </h3>
-          <p className="mt-3 max-w-sm text-sm text-gusto-slate/80">
-            We have branches spread across northern Malaysia, serving
-            customers throughout the region.
+          <p id="contact-form-notice" className="mt-3 text-sm text-gusto-slate/80">
+            Online submissions are not available yet. Please contact us by
+            phone or email in the meantime.
           </p>
-          <LocationCard {...headquarters} className="mt-8" />
-        </div>
-
-        {branches.map((location) => (
-          <LocationCard key={location.branch} {...location} />
-        ))}
+          <form aria-labelledby="contact-form-heading" aria-describedby="contact-form-notice" className="mt-8 space-y-5">
+            <div>
+              <label htmlFor="contact-name" className="block text-sm font-semibold text-gusto-navy">
+                Name <span className="text-gusto-orange" aria-hidden="true">*</span>
+              </label>
+              <input
+                id="contact-name"
+                name="name"
+                type="text"
+                autoComplete="name"
+                required
+                className="mt-2 w-full rounded-lg border border-gusto-navy/20 bg-white px-4 py-3 text-sm text-gusto-slate focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gusto-orange"
+              />
+            </div>
+            <div className="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label htmlFor="contact-email" className="block text-sm font-semibold text-gusto-navy">
+                  Email <span className="text-gusto-orange" aria-hidden="true">*</span>
+                </label>
+                <input
+                  id="contact-email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  className="mt-2 w-full rounded-lg border border-gusto-navy/20 bg-white px-4 py-3 text-sm text-gusto-slate focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gusto-orange"
+                />
+              </div>
+              <div>
+                <label htmlFor="contact-phone" className="block text-sm font-semibold text-gusto-navy">
+                  Phone <span className="font-normal text-gusto-slate/70">(optional)</span>
+                </label>
+                <input
+                  id="contact-phone"
+                  name="phone"
+                  type="tel"
+                  autoComplete="tel"
+                  className="mt-2 w-full rounded-lg border border-gusto-navy/20 bg-white px-4 py-3 text-sm text-gusto-slate focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gusto-orange"
+                />
+              </div>
+            </div>
+            <div>
+              <label htmlFor="contact-message" className="block text-sm font-semibold text-gusto-navy">
+                Message <span className="text-gusto-orange" aria-hidden="true">*</span>
+              </label>
+              <textarea
+                id="contact-message"
+                name="message"
+                rows={5}
+                required
+                className="mt-2 w-full resize-y rounded-lg border border-gusto-navy/20 bg-white px-4 py-3 text-sm text-gusto-slate focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gusto-orange"
+              />
+            </div>
+            <button
+              type="submit"
+              disabled
+              aria-describedby="contact-form-notice"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-gusto-orange px-6 py-3 font-wide text-sm font-semibold uppercase text-white disabled:cursor-not-allowed disabled:opacity-60 md:text-xs lg:text-sm"
+            >
+              Send Message
+              <ArrowRightIcon className="size-4" />
+            </button>
+          </form>
+        </Reveal>
       </div>
     </section>
   );

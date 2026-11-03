@@ -2,40 +2,46 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { images } from "../lib/site-data";
+import { CloseIcon, MenuIcon } from "./Icons";
 
 const navLinks = [
-  { label: "Home", href: "/", id: "home", route: "/" },
-  { label: "Products", href: "/#products", id: "products", route: "/products" },
-  { label: "About Us", href: "/#about", id: "about", route: "/about" },
-  { label: "Contact Us", href: "/#contact", id: "contact", route: "/contact" },
+  { label: "Home", href: "/", id: "home" },
+  { label: "Products", href: "/#products", id: "products" },
+  { label: "About Us", href: "/#about", id: "about" },
+  { label: "Contact Us", href: "/#contact", id: "contact" },
 ];
 
 export function Navbar() {
-  const pathname = usePathname();
-  const isHome = pathname === "/";
   const [activeSection, setActiveSection] = useState("home");
-  const [heroHidden, setHeroHidden] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
-  // Visited routes stay mounted (hidden) under Cache Components, so section ids can exist off the home page.
   useEffect(() => {
-    if (!isHome) {
-      return;
+    if (!menuOpen) return;
+
+    function handlePointerDown(event: PointerEvent) {
+      if (event.target instanceof Node && !headerRef.current?.contains(event.target)) {
+        setMenuOpen(false);
+      }
     }
 
-    const hero = document.getElementById("home");
-    const heroObserver = new IntersectionObserver(
-      ([entry]) => {
-        setHeroHidden(!entry.isIntersecting);
-      },
-      { threshold: 0 },
-    );
-    if (hero) {
-      heroObserver.observe(hero);
+    const desktop = window.matchMedia("(min-width: 768px)");
+    function handleResize() {
+      if (desktop.matches) setMenuOpen(false);
     }
 
+    document.addEventListener("pointerdown", handlePointerDown);
+    desktop.addEventListener("change", handleResize);
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      desktop.removeEventListener("change", handleResize);
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
     const sectionObserver = new IntersectionObserver(
       (entries) => {
         const visible = entries
@@ -59,51 +65,77 @@ export function Navbar() {
     }
 
     return () => {
-      heroObserver.disconnect();
       sectionObserver.disconnect();
     };
-  }, [isHome]);
+  }, []);
 
   return (
     <header
-      className={`sticky top-0 z-30 bg-white transition-transform duration-300 ease-out ${
-        isHome && heroHidden ? "-translate-y-full" : "translate-y-0"
-      }`}
+      ref={headerRef}
+      className="sticky top-0 z-30 border-b border-gusto-navy/10 bg-white shadow-sm"
+      onKeyDown={(event) => {
+        if (event.key === "Escape" && menuOpen) {
+          setMenuOpen(false);
+          menuButtonRef.current?.focus();
+        }
+      }}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setMenuOpen(false);
+      }}
     >
-      <div className="flex justify-center py-3">
-        <Link href="/" aria-label="Gusto Pro home">
+      <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-2 px-3 sm:h-22 sm:gap-6 sm:px-6 lg:px-10">
+        <Link href="/" aria-label="Gusto Pro home" className="shrink-0" onClick={() => setMenuOpen(false)}>
           <Image
             src={images.logo}
             alt="Gusto Pro"
             width={259}
             height={114}
             preload
-            className="h-[114px] w-[259px]"
+            className="h-auto w-28 sm:w-34 lg:w-40"
           />
         </Link>
-      </div>
-      <nav className="grid grid-cols-4" aria-label="Primary">
+        <button
+          ref={menuButtonRef}
+          type="button"
+          aria-expanded={menuOpen}
+          aria-controls="primary-navigation"
+          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+          title={menuOpen ? "Close navigation" : "Open navigation"}
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="flex size-11 shrink-0 items-center justify-center text-2xl text-gusto-navy hover:text-gusto-orange focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gusto-orange md:hidden"
+        >
+          {menuOpen ? <CloseIcon /> : <MenuIcon />}
+        </button>
+      <nav
+        id="primary-navigation"
+        className={`${menuOpen ? "flex" : "hidden"} absolute inset-x-0 top-full max-h-[calc(100dvh-5.5rem)] flex-col items-start gap-1 overflow-y-auto border-b border-gusto-navy/10 bg-white px-6 py-3 shadow-sm md:static md:flex md:max-h-none md:flex-row md:items-center md:gap-2 md:overflow-visible md:border-0 md:p-0 md:shadow-none lg:gap-4`}
+        aria-label="Primary"
+      >
         {navLinks.map((link) => {
-          const isActive = isHome
-            ? activeSection === link.id
-            : pathname === link.route;
+          const isActive = activeSection === link.id;
           return (
             <Link
               key={link.id}
               href={link.href}
               aria-current={isActive ? "page" : undefined}
-              onClick={() => setActiveSection(link.id)}
-              className={`font-wide py-1.5 text-center text-[10px] font-semibold uppercase tracking-wide transition-colors sm:text-xs ${
-                isActive
-                  ? "bg-gusto-orange text-white"
-                  : "text-gusto-navy hover:bg-gusto-orange/10"
-              }`}
+              onClick={() => {
+                setActiveSection(link.id);
+                setMenuOpen(false);
+              }}
+              className="group font-wide whitespace-nowrap px-3 py-3 text-center text-sm font-semibold uppercase text-gusto-navy transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gusto-orange md:text-xs lg:px-4 lg:text-sm"
             >
-              {link.label}
+              <span
+                className={`inline-block border-b-2 pb-1 transition-colors group-hover:border-gusto-orange ${
+                  isActive ? "border-gusto-orange" : "border-transparent"
+                }`}
+              >
+                {link.label}
+              </span>
             </Link>
           );
         })}
       </nav>
+      </div>
     </header>
   );
 }
