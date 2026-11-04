@@ -30,7 +30,7 @@ export function AboutSection() {
             label="Stacked rolls image"
             sizes="(min-width: 1024px) 60vw, 120vw"
             className="h-full w-full text-gusto-slate"
-            imageClassName="object-cover sm:object-contain"
+            imageClassName="object-cover sm:object-contain lg:scale-145"
           />
         </Reveal>
         <Reveal delay={150} className="text-center lg:text-right">

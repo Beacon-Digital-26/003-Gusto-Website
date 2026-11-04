@@ -1,9 +1,7 @@
 import type { ComponentType } from "react";
 import {
   FacebookIcon,
-  InstagramIcon,
   ShoppingBagIcon,
-  TikTokIcon,
   WhatsAppIcon,
 } from "../components/Icons";
 
@@ -182,14 +180,11 @@ export const contact = {
 // Replace "#" with the real profile/store URLs.
 export const socials: { label: string; href: string; icon: IconComponent }[] = [
   { label: "WhatsApp", href: "https://wa.me/60129225233", icon: WhatsAppIcon },
-  { label: "Instagram", href: "#", icon: InstagramIcon },
-  { label: "Facebook", href: "#", icon: FacebookIcon },
-  { label: "TikTok", href: "#", icon: TikTokIcon },
   { label: "Shopee", href: "#", icon: ShoppingBagIcon },
 ];
 
 export const footerSocials = socials.filter((item) =>
-  ["WhatsApp", "Instagram", "TikTok", "Shopee"].includes(item.label),
+  ["WhatsApp", "Shopee"].includes(item.label),
 );
 
 export const locations: { branch: string; address: string; image?: string }[] = [
