@@ -22,7 +22,7 @@ export function AboutSection() {
         />
       </div>
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-6 sm:gap-12 sm:px-10 lg:grid-cols-2 lg:pl-0">
+      <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-6 sm:gap-12 sm:px-8 lg:px-10 lg:grid-cols-2 lg:pl-0">
         <Reveal className="order-last -mx-0 aspect-[1792/1550] w-full max-w-xl sm:aspect-[2/3] lg:order-first lg:mx-0">
           <ImageSlot
             src={images.aboutRolls}

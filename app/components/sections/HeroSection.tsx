@@ -27,14 +27,14 @@ function Hero() {
     >
       <div
         aria-hidden="true"
-        className="font-display pointer-events-none absolute inset-y-0 right-0 flex select-none flex-col justify-center pr-[2vw] text-right text-[233px] leading-[0.85] tracking-[14%] text-white/15"
+        className="font-display pointer-events-none absolute inset-y-0 right-0 flex select-none flex-col justify-center pr-[2vw] text-right text-[233px] leading-[0.85] md:text-[160px] lg:text-[233px] tracking-[14%] text-white/15"
       >
         <span>GUSTO</span>
         <span>PRO</span>
       </div>
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-6 pb-32 pt-[75px] sm:px-10 md:grid-cols-2 md:pb-40 md:pt-[91px]">
-        <Reveal className="relative z-10 md:-ml-[50px] md:col-start-1">
+      <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-6 pb-32 pt-[75px] sm:px-8 lg:px-10 md:grid-cols-2 md:pb-40 md:pt-[91px]">
+        <Reveal className="relative z-10 md:col-start-1 xl:-ml-[50px]">
           <h1 className="font-display text-6xl leading-[90px] text-white uppercase sm:text-7xl lg:text-8xl xl:text-[7.5rem]">
             Trash
             <br />
@@ -58,7 +58,7 @@ function Hero() {
 
         <Reveal
           delay={150}
-          className="relative z-10 flex justify-center md:absolute md:right-[-4%] md:top-1/2 md:w-[608.24px] md:-translate-x-[100px] md:-translate-y-[calc(50%+5px)] md:justify-end"
+          className="relative z-10 flex justify-center md:absolute md:right-[-4%] md:top-1/2 md:w-[min(608.24px,50vw)] md:-translate-y-[calc(50%+5px)] lg:-translate-x-[100px] md:justify-end"
         >
           <ImageSlot
             src={images.heroProduct}
@@ -66,7 +66,7 @@ function Hero() {
             label="Hero product image"
             sizes="(min-width: 768px) 609px, 300px"
             preload
-            className="aspect-[608.24/722.41] w-[300px] max-w-full drop-shadow-2xl md:w-[608.24px]"
+            className="aspect-[608.24/722.41] w-[300px] max-w-full drop-shadow-2xl md:w-[min(608.24px,50vw)]"
           />
         </Reveal>
       </div>
@@ -77,7 +77,7 @@ function Hero() {
 function WhyChooseUs() {
   return (
     <section className="overflow-hidden">
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 pb-24 sm:px-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
+      <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 pb-24 sm:px-8 lg:px-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
         <div className="lg:order-last lg:-ml-56">
           <Reveal
             as="h2"
@@ -118,14 +118,14 @@ function WhyChooseUs() {
 
         <Reveal
           delay={150}
-          className="relative -ml-6 flex justify-start sm:-ml-10 lg:order-first lg:ml-[calc(min((80rem_-_100vw)/2,0px)_-_2.5rem)]"
+          className="relative -ml-6 flex justify-start sm:-ml-8 lg:order-first lg:ml-[calc(min((80rem_-_100vw)/2,0px)_-_2.5rem)]"
         >
           <ImageSlot
             src={images.whyChooseUs}
             alt="Hand holding a tied black Gusto Pro garbage bag"
             label="Hand holding bag image"
-            sizes="(min-width: 1024px) 700px, 100vw"
-            className="aspect-[873/1222] w-[320px] max-w-full text-gusto-slate lg:w-[700px]"
+            sizes="(min-width: 1280px) 700px, (min-width: 1024px) 56vw, 320px"
+            className="aspect-[873/1222] w-[320px] max-w-full text-gusto-slate lg:w-[min(700px,calc(55.56vw_-_207px))] xl:w-[700px]"
           />
         </Reveal>
       </div>

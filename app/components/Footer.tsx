@@ -41,7 +41,7 @@ function FooterNav() {
 
 export function Footer() {
   return (
-    <footer className="bg-[#001256] px-6 text-white sm:px-10 lg:px-[50px]">
+    <footer className="bg-[#001256] px-6 text-white sm:px-8 lg:px-10">
       <div className="grid items-start gap-x-10 gap-y-10 pb-7 pt-8 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.7fr_1.25fr_1fr]">
         <Reveal as="div">
           <Image

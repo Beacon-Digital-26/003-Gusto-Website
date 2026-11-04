@@ -16,7 +16,7 @@ export function ProductsSection() {
 
 function Products() {
   return (
-    <section id="products" className="scroll-mt-36 bg-white px-6 pb-24 sm:px-10">
+    <section id="products" className="scroll-mt-36 bg-white px-6 pb-24 sm:px-8 lg:px-10">
       <Reveal
         as="h2"
         className="font-display text-center text-5xl leading-[0.9] tracking-[-1.12px] text-gusto-orange uppercase sm:text-6xl lg:text-[84px] lg:leading-[62px]"
@@ -85,7 +85,7 @@ function ProductCard({
 function Testimonials() {
   return (
     <section className="overflow-hidden bg-slate-50 py-20 sm:py-24">
-      <Reveal as="div" className="px-6 sm:px-10">
+      <Reveal as="div" className="px-6 sm:px-8 lg:px-10">
         <p className="font-wide text-center text-[10px] font-bold uppercase tracking-[0.2em] text-gusto-slate/80 sm:text-xs">
           Shopee Reviews
         </p>

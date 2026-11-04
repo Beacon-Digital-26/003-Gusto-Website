@@ -83,7 +83,7 @@ export function Navbar() {
         if (!event.currentTarget.contains(event.relatedTarget)) setMenuOpen(false);
       }}
     >
-      <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-2 px-3 sm:h-22 sm:gap-6 sm:px-6 lg:px-10">
+      <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-2 px-3 sm:h-22 sm:gap-6 sm:px-6 md:px-8 lg:px-10">
         <Link href="/" aria-label="Gusto Pro home" className="shrink-0" onClick={() => setMenuOpen(false)}>
           <Image
             src={images.logo}

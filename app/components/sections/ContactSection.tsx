@@ -31,7 +31,7 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="scroll-mt-36 bg-slate-50 px-6 py-20 sm:px-10 sm:py-24"
+      className="scroll-mt-36 bg-slate-50 px-6 py-20 sm:px-8 sm:py-24 lg:px-10"
     >
       <Reveal
         as="h2"

@@ -93,7 +93,7 @@ export function TestimonialsCarousel({
     <div
       role="region"
       aria-label="Customer testimonials"
-      className="relative mx-auto max-w-7xl px-6 sm:px-10"
+      className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-10"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onFocus={() => setIsPaused(true)}
