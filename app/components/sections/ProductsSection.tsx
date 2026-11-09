@@ -29,7 +29,11 @@ function Products() {
             as="li"
             key={product.size}
             delay={index * 80}
-            className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
+            className={`w-full sm:w-[calc(50%-0.75rem)] ${
+              product.large
+                ? "lg:w-[calc(42%-0.75rem)]"
+                : "lg:w-[calc(33.333%-1rem)]"
+            }`}
           >
             <ProductCard {...product} />
           </Reveal>
@@ -45,6 +49,8 @@ function ProductCard({
   bagsPerRoll,
   image,
   imageClassName,
+  frameClassName,
+  large,
 }: (typeof products)[number]) {
   return (
     <article className="group">
@@ -53,9 +59,13 @@ function ProductCard({
           src={image}
           alt={`Gusto Pro heavy duty garbage bag, size ${size}`}
           label={`Size ${size} product image`}
-          sizes="(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw"
+          sizes={
+            large
+              ? "(min-width: 1024px) 480px, (min-width: 640px) 50vw, 100vw"
+              : "(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw"
+          }
           imageClassName={imageClassName}
-          className="aspect-[4/3] w-full text-gusto-slate transition duration-300 group-hover:scale-105"
+          className={`${frameClassName ?? "aspect-[4/3]"} w-full text-gusto-slate transition duration-300 group-hover:scale-105`}
         />
       </div>
       <div className="mt-4 flex items-start justify-between gap-3">

@@ -21,7 +21,7 @@ function ContactItem({
         <p className="text-xs font-semibold uppercase tracking-wide text-gusto-navy">
           {label}
         </p>
-        <div className="mt-1 max-w-xs text-gusto-slate">{children}</div>
+        <div className="mt-1 max-w-xs whitespace-pre-line text-gusto-slate">{children}</div>
       </div>
     </li>
   );
@@ -55,9 +55,17 @@ export function ContactSection() {
               {contact.hqAddress}
             </ContactItem>
             <ContactItem icon={PhoneIcon} label="Phone Services">
-              <a href={contact.phoneHref} className="hover:text-gusto-orange">
-                H/P: {contact.phone}
-              </a>
+              <div className="flex flex-col gap-1">
+                {contact.phones.map((phone) => (
+                  <a
+                    key={phone.href}
+                    href={phone.href}
+                    className="hover:text-gusto-orange"
+                  >
+                    H/P: {phone.label}
+                  </a>
+                ))}
+              </div>
             </ContactItem>
             <ContactItem icon={MailIcon} label="Email Correspondence">
               <a

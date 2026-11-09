@@ -23,14 +23,14 @@ export function AboutSection() {
       </div>
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-6 sm:gap-12 sm:px-8 lg:px-10 lg:grid-cols-2 lg:pl-0">
-        <Reveal className="order-last -mx-0 aspect-[1792/1550] w-full max-w-xl sm:aspect-[2/3] lg:order-first lg:mx-0">
+        <Reveal className="order-last aspect-[2/3] w-full max-w-xl lg:order-first">
           <ImageSlot
             src={images.aboutRolls}
             alt="Stack of Gusto Pro heavy duty garbage bag rolls in sizes S to XXL"
             label="Stacked rolls image"
-            sizes="(min-width: 1024px) 60vw, 120vw"
+            sizes="(min-width: 1024px) 36rem, 100vw"
             className="h-full w-full text-gusto-slate"
-            imageClassName="object-cover sm:object-contain lg:scale-145"
+            imageClassName="object-contain"
           />
         </Reveal>
         <Reveal delay={150} className="text-center lg:text-right">

@@ -78,7 +78,7 @@ function WhyChooseUs() {
   return (
     <section className="overflow-hidden">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 pb-24 sm:px-8 lg:px-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
-        <div className="lg:order-last lg:-ml-56">
+        <div className="lg:order-last lg:-ml-[calc(14rem-90px)]">
           <Reveal
             as="h2"
             className="font-display text-5xl leading-[0.9] tracking-[-1.12px] text-gusto-orange uppercase sm:text-6xl lg:text-[84px] lg:leading-[62px]"
@@ -88,31 +88,33 @@ function WhyChooseUs() {
             <span className="whitespace-nowrap">Choose Us?</span>
           </Reveal>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-[1.6fr_1fr]">
-            <Reveal as="div">
-              <FeatureCard
-                icon={LayersIcon}
-                title="3-Layer Film"
-                description="Advanced co-extrusion cross-lamination prevents lateral split initiation even under sharp stress."
-                large
-              />
-            </Reveal>
-            <Reveal as="div" delay={80} className="sm:mt-8 sm:self-center">
-              <FeatureCard icon={ExpandIcon} title="Holds 35KG" />
-            </Reveal>
-          </div>
-          <div className="mt-5 grid gap-5 sm:grid-cols-[1fr_1.6fr]">
-            <Reveal as="div" delay={160} className="sm:self-start">
-              <FeatureCard icon={DropIcon} title="Water Resistant" />
-            </Reveal>
-            <Reveal as="div" delay={240}>
-              <FeatureCard
-                icon={MoneyBagIcon}
-                title="Affordable"
-                description="Three layers. Zero leaks. Lower price. Stronger than standard bags, without the premium cost."
-                large
-              />
-            </Reveal>
+          <div className="lg:translate-x-10">
+            <div className="mt-10 grid gap-5 sm:grid-cols-[1.6fr_1fr]">
+              <Reveal as="div">
+                <FeatureCard
+                  icon={LayersIcon}
+                  title="3-Layer Film"
+                  description="Advanced co-extrusion cross-lamination prevents lateral split initiation even under sharp stress."
+                  large
+                />
+              </Reveal>
+              <Reveal as="div" delay={80} className="sm:mt-8 sm:self-center">
+                <FeatureCard icon={ExpandIcon} title="Holds 35KG" />
+              </Reveal>
+            </div>
+            <div className="mt-5 grid gap-5 sm:grid-cols-[1fr_1.6fr]">
+              <Reveal as="div" delay={160} className="sm:self-start">
+                <FeatureCard icon={DropIcon} title="Water Resistant" />
+              </Reveal>
+              <Reveal as="div" delay={240}>
+                <FeatureCard
+                  icon={MoneyBagIcon}
+                  title="Affordable"
+                  description="Three layers. Zero leaks. Lower price. Stronger than standard bags, without the premium cost."
+                  large
+                />
+              </Reveal>
+            </div>
           </div>
         </div>
 
