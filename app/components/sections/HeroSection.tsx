@@ -81,7 +81,7 @@ function WhyChooseUs() {
         <div className="min-w-0 lg:order-last lg:-ml-[calc(14rem-90px)]">
           <Reveal
             as="h2"
-            className="text-center font-display text-4xl leading-[0.9] tracking-[-1.12px] text-gusto-orange uppercase min-[400px]:text-5xl sm:text-6xl lg:text-left lg:text-[84px] lg:leading-[62px]"
+            className="text-center font-display text-4xl leading-[0.9] tracking-[-1.12px] text-gusto-orange uppercase min-[400px]:text-5xl sm:text-4xl lg:text-left lg:text-[84px] lg:leading-[62px]"
           >
             Why
             <br />

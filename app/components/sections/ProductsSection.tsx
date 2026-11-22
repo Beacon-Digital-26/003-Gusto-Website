@@ -19,7 +19,7 @@ function Products() {
     <section id="products" className="scroll-mt-36 bg-white px-6 pb-24 sm:px-8 lg:px-10">
       <Reveal
         as="h2"
-        className="font-display text-center text-5xl leading-[0.9] tracking-[-1.12px] text-gusto-orange uppercase sm:text-6xl lg:text-[84px] lg:leading-[62px]"
+        className="font-display text-center text-5xl leading-[0.9] tracking-[-1.12px] text-gusto-orange uppercase sm:text-4xl lg:text-[84px] lg:leading-[62px]"
       >
         Products
       </Reveal>
