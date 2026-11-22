@@ -34,7 +34,7 @@ export function AboutSection() {
           />
         </Reveal>
         <Reveal delay={150} className="text-center lg:text-right">
-          <h2 className="font-display text-5xl tracking-[-1.12px] text-gusto-orange uppercase sm:text-6xl lg:text-7xl">
+          <h2 className="font-display text-5xl tracking-[-1.12px] text-gusto-orange uppercase sm:text-4xl lg:text-7xl">
             About Us
           </h2>
           <div className="mt-6 space-y-5 text-center text-[18px] font-light leading-[1.7] text-black lg:ml-auto lg:max-w-xl lg:text-right">

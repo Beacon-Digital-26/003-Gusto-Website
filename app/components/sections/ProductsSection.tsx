@@ -102,7 +102,7 @@ function Testimonials() {
         <p className="font-wide text-center text-[10px] font-bold uppercase tracking-[0.2em] text-gusto-slate/80 sm:text-xs">
           Shopee Reviews
         </p>
-        <h2 className="font-display mt-3 text-center text-4xl leading-[0.95] text-gusto-orange uppercase sm:text-6xl">
+        <h2 className="font-display mt-3 text-center text-4xl leading-[0.95] text-gusto-orange uppercase sm:text-4xl">
           Strong Bags,
           <br />
           Happy Customers
