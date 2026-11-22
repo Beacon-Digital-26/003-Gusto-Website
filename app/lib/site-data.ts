@@ -36,7 +36,7 @@ export const images = {
   logo: "/images/logo.png",
   heroProduct: "/images/hero-product2.png",
   whyChooseUs: "/images/why-choose-us-new.png",
-  aboutRolls: "/images/about-us-product.jpg",
+  aboutRolls: "/images/about-us-product.png",
   aboutWatermark: "/images/about-watermark.png",
 };
 
