@@ -45,7 +45,7 @@ function Hero() {
             Tough
           </h1>
           <p className="mt-6 text-base text-white/80 sm:text-lg">
-            Manufactured by Heng Heng Plastic Trading Malaysia
+            Technology & formulation by Heng Heng Plastic Trading Malaysia
           </p>
           <Link
             href="/#products"
@@ -78,10 +78,10 @@ function WhyChooseUs() {
   return (
     <section className="overflow-hidden">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 pb-24 sm:px-8 lg:px-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
-        <div className="lg:order-last lg:-ml-[calc(14rem-90px)]">
+        <div className="min-w-0 lg:order-last lg:-ml-[calc(14rem-90px)]">
           <Reveal
             as="h2"
-            className="font-display text-5xl leading-[0.9] tracking-[-1.12px] text-gusto-orange uppercase sm:text-6xl lg:text-[84px] lg:leading-[62px]"
+            className="text-center font-display text-4xl leading-[0.9] tracking-[-1.12px] text-gusto-orange uppercase min-[400px]:text-5xl sm:text-6xl lg:text-left lg:text-[84px] lg:leading-[62px]"
           >
             Why
             <br />

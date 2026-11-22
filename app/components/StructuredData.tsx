@@ -31,7 +31,7 @@ const jsonLd = {
       telephone: contact.phones.map((phone) => phone.href.replace("tel:", "")),
       address: postalAddress(headquarters),
       brand: { "@type": "Brand", name: site.name },
-      sameAs: [site.shopeeUrl],
+      sameAs: [site.shopeeUrl, site.instagramUrl],
       contactPoint: contact.phones.map((phone) => ({
         "@type": "ContactPoint",
         telephone: phone.href.replace("tel:", ""),

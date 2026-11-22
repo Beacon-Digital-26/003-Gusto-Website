@@ -1,7 +1,8 @@
 import type { ComponentType } from "react";
 import {
   FacebookIcon,
-  ShoppingBagIcon,
+  InstagramIcon,
+  ShopeeIcon,
   WhatsAppIcon,
 } from "../components/Icons";
 
@@ -27,6 +28,7 @@ export const site = {
     "Heng Heng Plastic Trading",
   ],
   shopeeUrl: "https://my.shp.ee/FnGHdEFP",
+  instagramUrl: "https://www.instagram.com/henghengplastictrading/",
 };
 
 // Drop files into /public/images and set the paths here, e.g. "/images/logo.png".
@@ -223,11 +225,12 @@ export const contact = {
 
 export const socials: { label: string; href: string; icon: IconComponent }[] = [
   { label: "WhatsApp", href: "https://wa.me/60129225233", icon: WhatsAppIcon },
-  { label: "Shopee", href: site.shopeeUrl, icon: ShoppingBagIcon },
+  { label: "Shopee", href: site.shopeeUrl, icon: ShopeeIcon },
+  { label: "Instagram", href: site.instagramUrl, icon: InstagramIcon },
 ];
 
 export const footerSocials = socials.filter((item) =>
-  ["WhatsApp", "Shopee"].includes(item.label),
+  ["WhatsApp", "Shopee", "Instagram"].includes(item.label),
 );
 
 type Location = {
