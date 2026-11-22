@@ -3,7 +3,7 @@ import { ArrowRightIcon } from "../Icons";
 import { ImageSlot } from "../ImageSlot";
 import { Reveal } from "../Reveal";
 import { TestimonialsCarousel } from "../TestimonialsCarousel";
-import { products, testimonials } from "../../lib/site-data";
+import { products, site, testimonials } from "../../lib/site-data";
 
 export function ProductsSection() {
   return (
@@ -82,7 +82,10 @@ function ProductCard({
         </span>
       </div>
       <Link
-        href="https://my.shp.ee/FnGHdEFP"
+        href={site.shopeeUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Buy now: Gusto Pro size ${size} garbage bags on Shopee`}
         className="mt-4 inline-flex items-center gap-2 rounded-full bg-gusto-orange px-5 py-2 font-wide text-sm font-semibold uppercase text-white shadow-md shadow-orange-900/15 transition hover:-translate-y-0.5 hover:bg-gusto-orange-dark md:text-xs lg:text-sm"
       >
         Buy Now

@@ -52,7 +52,7 @@ export function ContactSection() {
 
           <ul className="mt-8 space-y-6">
             <ContactItem icon={MapPinIcon} label="Headquarters & Warehouse">
-              {contact.hqAddress}
+              <address className="not-italic">{contact.hqAddress}</address>
             </ContactItem>
             <ContactItem icon={PhoneIcon} label="Phone Services">
               <div className="flex flex-col gap-1">

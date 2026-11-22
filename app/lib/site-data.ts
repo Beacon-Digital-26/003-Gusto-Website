@@ -7,6 +7,28 @@ import {
 
 export type IconComponent = ComponentType<{ className?: string }>;
 
+export const site = {
+  url: "https://www.gusto.com.my",
+  name: "Gusto Pro",
+  company: "Heng Heng Plastic Trading",
+  title: "Gusto Pro Heavy Duty Garbage Bags Malaysia | Trash Bag Built Tough",
+  description:
+    "Gusto Pro heavy duty 3-layer garbage bags (plastik sampah) by Heng Heng Plastic Trading, Kedah, Malaysia. Holds up to 35KG, water resistant and leak-proof. Sizes S to XXL for home, shop and commercial use.",
+  keywords: [
+    "Gusto Pro",
+    "garbage bag Malaysia",
+    "heavy duty garbage bag",
+    "trash bag",
+    "rubbish bag",
+    "plastik sampah",
+    "beg sampah",
+    "plastic bag supplier Kedah",
+    "garbage bag Alor Setar",
+    "Heng Heng Plastic Trading",
+  ],
+  shopeeUrl: "https://my.shp.ee/FnGHdEFP",
+};
+
 // Drop files into /public/images and set the paths here, e.g. "/images/logo.png".
 export const images = {
   logo: "/images/logo.png",
@@ -199,33 +221,61 @@ export const contact = {
     "No. 2, 2A, 3, 3A, 4, 4A, 6 Lot 5440,\nPersimpangan, Jalan Lencong Barat,\nTandop, 05400 Alor Setar,\nKedah",
 };
 
-// Replace "#" with the real profile/store URLs.
 export const socials: { label: string; href: string; icon: IconComponent }[] = [
   { label: "WhatsApp", href: "https://wa.me/60129225233", icon: WhatsAppIcon },
-  { label: "Shopee", href: "#", icon: ShoppingBagIcon },
+  { label: "Shopee", href: site.shopeeUrl, icon: ShoppingBagIcon },
 ];
 
 export const footerSocials = socials.filter((item) =>
   ["WhatsApp", "Shopee"].includes(item.label),
 );
 
-export const locations: { branch: string; address: string; image?: string }[] = [
-  { branch: "Headquarters", address: contact.hqAddress },
+type Location = {
+  branch: string;
+  address: string;
+  // Structured fields feed the LocalBusiness JSON-LD.
+  streetAddress: string;
+  locality: string;
+  postalCode: string;
+  image?: string;
+};
+
+export const locations: Location[] = [
+  {
+    branch: "Headquarters",
+    address: contact.hqAddress,
+    streetAddress:
+      "No. 2, 2A, 3, 3A, 4, 4A, 6 Lot 5440, Persimpangan, Jalan Lencong Barat, Tandop",
+    locality: "Alor Setar",
+    postalCode: "05400",
+  },
   {
     branch: "Sungai Petani",
     address: "No 5, Jalan Petri, Taman Pekan Baru, Sungai Petani, Malaysia, 08000",
+    streetAddress: "No 5, Jalan Petri, Taman Pekan Baru",
+    locality: "Sungai Petani",
+    postalCode: "08000",
   },
   {
     branch: "Simpang Kuala",
     address: "228A, Jalan PSK 7, Pekan Simpang Kuala, Simpang Kuala, 05400 Alor Setar, Kedah",
+    streetAddress: "228A, Jalan PSK 7, Pekan Simpang Kuala, Simpang Kuala",
+    locality: "Alor Setar",
+    postalCode: "05400",
   },
   {
     branch: "Simpang Empat",
     address: "No. 8E, Tingkat Bawah, Jalan Pekan Simpang Empat 3, Simpang Empat, 06650 Alor Setar, Kedah",
+    streetAddress: "No. 8E, Tingkat Bawah, Jalan Pekan Simpang Empat 3, Simpang Empat",
+    locality: "Alor Setar",
+    postalCode: "06650",
   },
   {
     branch: "Tanah Merah",
     address: "No 70 BWH, Jalan Tanah Merah, Bandar Baru, Tanah Merah, 06700 Pendang, Kedah",
+    streetAddress: "No 70 BWH, Jalan Tanah Merah, Bandar Baru, Tanah Merah",
+    locality: "Pendang",
+    postalCode: "06700",
   },
 ];
 

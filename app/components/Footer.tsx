@@ -52,9 +52,9 @@ export function Footer() {
             unoptimized
             className="h-auto w-[160px] max-w-full"
           />
-          <p className="mt-4 max-w-[360px] whitespace-pre-line text-[13px] leading-relaxed text-white/80">
+          <address className="mt-4 max-w-[360px] whitespace-pre-line text-[13px] not-italic leading-relaxed text-white/80">
             {contact.hqAddress}
-          </p>
+          </address>
           <ul className="mt-5 flex gap-3">
             {footerSocials.map(({ label, href, icon: SocialIcon }) => (
               <li key={label}>
