@@ -12,7 +12,7 @@ export const images = {
   logo: "/images/logo.png",
   heroProduct: "/images/hero-product2.png",
   whyChooseUs: "/images/why-choose-us-new.png",
-  aboutRolls: "/images/about-us-product.png",
+  aboutRolls: "/images/about-us-product.jpg",
   aboutWatermark: "/images/about-watermark.png",
 };
 
@@ -22,12 +22,30 @@ export const products: {
   bagsPerRoll: number;
   image?: string;
   imageClassName?: string;
+  frameClassName?: string;
+  large?: boolean;
 }[] = [
   { size: "S", dimensions: "19 x 22 inch", bagsPerRoll: 20, image: "/images/s-product.png" },
   { size: "M", dimensions: "22 x 34 inch", bagsPerRoll: 20, image: "/images/m-product.png", imageClassName: "object-cover scale-[1.12]" },
   { size: "L", dimensions: "28 x 35 inch", bagsPerRoll: 20, image: "/images/l-product.png", imageClassName: "object-cover scale-[1.12]" },
-  { size: "XL", dimensions: "32 x 39 inch", bagsPerRoll: 15, image: "/images/xl-product.png", imageClassName: "object-cover scale-[1.12]" },
-  { size: "XXL", dimensions: "36 x 48 inch", bagsPerRoll: 10, image: "/images/xxl-product.png", imageClassName: "object-cover scale-[1.12]" },
+  {
+    size: "XL",
+    dimensions: "32 x 39 inch",
+    bagsPerRoll: 15,
+    image: "/images/xl-product.png",
+    imageClassName: "object-contain",
+    frameClassName: "aspect-[438/311]",
+    large: true,
+  },
+  {
+    size: "XXL",
+    dimensions: "36 x 48 inch",
+    bagsPerRoll: 10,
+    image: "/images/xxl-product.png",
+    imageClassName: "object-contain",
+    frameClassName: "aspect-[438/311]",
+    large: true,
+  },
 ];
 
 // Sourced from verified Shopee buyer reviews (ShopeeReviews_7049730518). Only
@@ -170,11 +188,15 @@ export const testimonials = [
 ];
 
 export const contact = {
+  phones: [
+    { label: "012-922 5233", href: "tel:+60129225233" },
+    { label: "012-668 7218", href: "tel:+60126687218" },
+  ],
   phone: "012-922 5233",
   phoneHref: "tel:+60129225233",
-  email: "hengheng@gmail.com",
+  email: "henghengplastictrading@gmail.com",
   hqAddress:
-    "No. 2, 2A, 3, 3A, 4, 4A, Lot 5440, Persimpangan, Jln Taman Jeliti, Tandop, 05400 Alor Setar, Kedah",
+    "No. 2, 2A, 3, 3A, 4, 4A, 6 Lot 5440,\nPersimpangan, Jalan Lencong Barat,\nTandop, 05400 Alor Setar,\nKedah",
 };
 
 // Replace "#" with the real profile/store URLs.

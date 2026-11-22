@@ -52,7 +52,7 @@ export function Footer() {
             unoptimized
             className="h-auto w-[160px] max-w-full"
           />
-          <p className="mt-4 max-w-[360px] text-[13px] leading-relaxed text-white/80">
+          <p className="mt-4 max-w-[360px] whitespace-pre-line text-[13px] leading-relaxed text-white/80">
             {contact.hqAddress}
           </p>
           <ul className="mt-5 flex gap-3">
@@ -94,12 +94,19 @@ export function Footer() {
           <p className="text-[11px] font-semibold uppercase tracking-[0.16em]">
             Contact Numbers
           </p>
-          <p className="mt-5 flex gap-3 text-[13px] text-white/80">
-            <span>H/P:</span>
-            <a href={contact.phoneHref} className="transition-colors hover:text-gusto-orange">
-              {contact.phone}
-            </a>
-          </p>
+          <div className="mt-5 space-y-2 text-[13px] text-white/80">
+            {contact.phones.map((phone) => (
+              <p key={phone.href} className="flex gap-3">
+                <span>H/P:</span>
+                <a
+                  href={phone.href}
+                  className="transition-colors hover:text-gusto-orange"
+                >
+                  {phone.label}
+                </a>
+              </p>
+            ))}
+          </div>
         </Reveal>
       </div>
 
